@@ -1,16 +1,4 @@
-// В файле main.js на основе написанных в прошлом задании утилитарных функций напишите необходимые функции для создания массива из 25 сгенерированных объектов. Каждый объект массива — описание фотографии, опубликованной пользователем.
-
-// Структура каждого объекта должна быть следующей:
-// id, число — идентификатор описания. Это число от 1 до 25. Идентификаторы не должны повторяться.
-// url, строка — адрес картинки вида photos/{{i}}.jpg, где {{i}} — это число от 1 до 25. Адреса картинок не должны повторяться.
-
-// description, строка — описание фотографии. Описание придумайте самостоятельно.
-
-// likes, число — количество лайков, поставленных фотографии. Случайное число от 15 до 200.
-
-// comments, массив объектов — список комментариев, оставленных другими пользователями к этой фотографии. Количество комментариев к каждой фотографии вы определяете на своё усмотрение. Все комментарии генерируются случайным образом. Пример описания объекта с комментарием:
-
-
+"use strict"
 
 //Массивы для генерации имён
 const NAMES = [
@@ -54,18 +42,17 @@ const getRandomNumber = (lower,upper) => {
 }          
 
 
-const createIds = (quantity) => {
-  return new Array(quantity).fill(null).map((e, i) => i + 1);
-}
-
-const createMessage = () => {
-  return MESSAGE_TEMPLATES[getRandomNumber(0,MESSAGE_TEMPLATES.length-1)];
-}
-
+//Генератор имён
 const createName = () => {
   return NAMES[getRandomNumber(0,NAMES.length-1)] + ' ' + SURNAMES[getRandomNumber(0,SURNAMES.length-1)]
 }
+
+//Генератор текста для комментов
+const createMessage = () => {
+  return MESSAGE_TEMPLATES[getRandomNumber(0,MESSAGE_TEMPLATES.length-1)];
+}
  
+//Генератор комментов
 const createComment = (i) => {
     return {
     id: i,
@@ -93,7 +80,5 @@ const createPostDescription = function (i) {
 
 // Генерируем массив с постами и комментами к ним
 const similarPosts = new Array(25).fill(null).map((e,i) => createPostDescription(i));
-console.log(similarPosts)
-
 
 
