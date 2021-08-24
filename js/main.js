@@ -78,7 +78,7 @@ const createPostDescription = function (i) {
   } 
 }
 
-// Генерируем массив с постами и комментами к ним
+// Сохраняем в массив сгенерированные объекты с постами и комментами к ним
 const similarPosts = new Array(25).fill(null).map((e,i) => createPostDescription(i));
 
 
