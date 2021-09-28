@@ -1,17 +1,22 @@
 import { getRandomNumber, getRandomArrayElement } from "./util.js";
 
-//Все данные для фото, сгенерированные в этом модуле добавим в этот массив и экспортируем в модуль preview
+//Все данные для фото, сгенерированные в  модуле добавим в ассив и экспортируем в модуль preview
 let photos = [];
 
 
 /*НАСТРОЙКИ*/
-const numberOfPhotos = 25; //Сколько генерировать фотографий
+
+//Сколько генерировать фотографий
+const numberOfPhotos = 5; 
 
 //Количество лайков 
 const likes = {
   MIN: 15,      
   MAX: 200,     
 }
+
+//Максимальное количество генерируемых комментов к фото
+const commentsMax = 3;
 
 
 /*МАССИВЫ ДЛЯ ГЕНЕРАЦИИ */
@@ -64,11 +69,11 @@ const MESSAGE_TEMPLATES = [
 // Генерация комментов и описания коментатора
 const addComments = function () {
   let comments = []
-  for (let i = 0; i < getRandomNumber(1, 15); i++) {
+  for (let i = 0; i < getRandomNumber(1, commentsMax); i++) {
     comments.push(
       {
         id: getRandomNumber(1, 999),
-        avatar: `img/avatar-${i}.svg`,
+        avatar: `img/avatar-${i+1}.svg`,
         message: MESSAGE_TEMPLATES[getRandomNumber(0, 5)],
         name: getRandomArrayElement(NAMES) + ' ' + getRandomArrayElement(SURNAMES)
       }
